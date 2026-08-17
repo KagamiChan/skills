@@ -1,6 +1,7 @@
 ---
 name: find-simplifications
 description: Find and evaluate evidence-backed opportunities to simplify a codebase by deleting, merging, demoting, or replacing unnecessary behavior and structure. Use for simplification audits, complexity reduction, dead or duplicated surface analysis, speculative or over-built feature review, redundant lifecycle or defensive machinery, package-boundary cleanup, and hand-rolled code that may be replaced by a standard library or maintained dependency. Works across languages and repository layouts without requiring project-specific design notes, delegation, or a particular review workflow.
+license: MIT. See LICENSE
 ---
 
 # Finding Simplifications
