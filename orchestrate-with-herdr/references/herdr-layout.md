@@ -1,6 +1,6 @@
 # Keep the lead visible and reclaim worker terminals
 
-The lead and its implementers and reviewers belong to the same verified Herdr workspace. Separate checkouts can live in that workspace. Identify the live lead session before allocating anything: the working directory, a focused tab, or inherited caller IDs alone can point to the wrong task. After creating or moving a pane, read back its workspace, tab, pane ID and occupant.
+For TUI, check `HERDR_ENV=1` and verify the target workspace before issuing control commands. The lead and its implementers and reviewers belong to the same verified Herdr workspace. Separate checkouts can live in that workspace. Identify the live lead session before allocating anything: the working directory, a focused tab, or inherited caller IDs alone can point to the wrong task. After creating or moving a pane, read back its workspace, tab, pane ID and occupant.
 
 ## Choose where a worker goes
 

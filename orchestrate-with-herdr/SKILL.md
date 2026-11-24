@@ -1,7 +1,7 @@
 ---
 name: orchestrate-with-herdr
-description: Coordinate delegated technical work from the current lead session in Herdr. Use when the user assigns orchestration and acceptance to the lead and implementation, investigation, or independent review to other agents.
-compatibility: Requires a Herdr-managed lead session, access to its Herdr CLI, and the worker clients and models selected for the assignment. Native GitHub stack delivery also requires same-repository branches and the gh stack extension for the CLI workflow.
+description: Coordinate delegated technical work from the current lead session in Herdr TUI, herdr-core (hc), or Herdr Desktop. Use when the user assigns orchestration and acceptance to the lead and implementation, investigation, or independent review to other agents.
+compatibility: Requires a Herdr-managed lead session, the CLI for its frontend (herdr for TUI, hc for Core, plus herdr-app for Desktop layout), and the worker clients and models selected for the assignment. Native GitHub stack delivery also requires same-repository branches and the gh stack extension for the CLI workflow.
 ---
 
 # Orchestrate with Herdr
@@ -26,15 +26,15 @@ Start a fresh implementation session for each independent assignment, including 
 
 ## Run the assignment in Herdr
 
-Before allocating a terminal, read the [workspace, tab, and pane guide](references/herdr-layout.md). The lead owns layout and cleanup through delivery.
+Use the frontend the user identifies for this assignment. If they say hc, Core, or Desktop, use the [Core and Desktop guide](references/herdr-core.md), even when the tool shell inherits TUI markers. For Herdr TUI, follow the [workspace, tab, and pane guide](references/herdr-layout.md). With a shared execution server, inherited environment values and UI focus alone cannot identify the user's frontend or workspace. Reuse an established task binding. If the frontend or destination remains ambiguous and affects dispatch, ask only for the missing choice.
 
-1. If `HERDR_ENV` is not `1`, stop Herdr operations. From a managed pane, check that the service is reachable. Resolve the lead's workspace, tab and pane using caller context, then verify the live task/session identity. Multiple agents can share a checkout. If caller context is stale, use read-only inspection to establish an unambiguous binding. If it remains ambiguous, ask before controlling a pane. Diagnose socket permissions separately from a missing service. While blocked, continue independent diagnosis and preserve the agreed delegation route.
-2. Choose a pane or worker tab in the verified lead workspace using the layout guide. Preserve the user's focus, set the worker's checkout, and use the **returned** pane ID to start the chosen interactive client. Verify the agent name and pane binding. Refresh the ID after moving a pane across workspaces.
+1. Check the selected service is reachable. Diagnose access errors separately from a missing service. Preserve the agreed route while advancing independent work.
+2. Place the worker using the selected guide. Keep its returned ID, checkout and assignment together and preserve the user's focus.
 3. Before sending materials, check the displayed client, provider and model against the assignment. For a requested DeepSeek via OpenCode Go, start ordinary interactive OpenCode and verify `opencode-go` and the requested tier/version. For AGY, use the installed model list and select the agreed model. Inspect a failed lookup for network or authentication errors. A startup failure calls for diagnosing the interactive client; switching to batch mode changes the agreement.
-4. Start from a ready worker. For a single assignment use `prompt --wait`; for parallel dispatch confirm that each worker started its assignment, then track it while advancing independent work. A wait observes lifecycle state. Read the output and match it to the assignment and revision before treating it as complete. On timeout or a stalled prompt, inspect the live pane before resending. Use `visible` while working and `recent-unwrapped` for settled output. If scrollback is incomplete, retrieve the final response or ask the worker to save it privately.
+4. Start from a ready worker. For a single assignment use the selected CLI's send-and-wait operation; for parallel dispatch confirm that each worker started its assignment, then track it while advancing independent work. A wait observes lifecycle state. Read the output and match it to the assignment and revision before treating it as complete. On timeout or a stalled prompt, inspect the live pane before resending. On TUI use `visible` while working and `recent-unwrapped` for settled output. If scrollback is incomplete, retrieve the final response or ask the worker to save it privately.
 5. On a trust, login, or permission prompt, inspect the requested action and target. Proceed within existing authorization. Route a new trust or permission decision to its owner. If a required reviewer is blocked, identify what actually ran and hold the dependent release. Keep substantive fixes with the implementer.
 
-Typical commands (replace placeholders with verified values):
+TUI commands (replace placeholders with verified values):
 
 ```text
 herdr pane layout --pane <lead-pane-id>
@@ -64,4 +64,8 @@ Use GitHub's native stack for dependent PRs. The bottom PR targets the trunk and
 
 Before reassigning a checkout, verify the previous worker has stopped at the execution service. A closed pane can leave a writer running. For a correction to the same assignment, reuse its session when useful. Give unrelated work and independent opinions fresh context.
 
-After compaction or handoff, recover the endpoint, role assignments, pane or session identifiers, checkout and revision, checks still pending, and next authorized action. Check live state before dispatching again. Resume supervision, route fixes, or deliver the verified result according to the user's stop condition. Reconcile owned panes as each assignment ends and verify the final layout before signing off.
+At task start, keep one private handoff for the assignment in the host's discoverable task record. If there is none, use `~/.local/state/herdr-handoffs/` on Unix or `%LOCALAPPDATA%/herdr-handoffs/` on Windows. Name the file after the persistent lead thread ID. If unavailable, use the verified TUI session and workspace-qualified pane ID, or the Core machine and lead terminal address when known, with path-unsafe characters escaped. If neither ID is available, use a unique task filename in the same private location. Record the task goal and checkout in the file to distinguish assignments sharing a terminal. Mark it complete at delivery; start a fresh record for a new assignment.
+
+Update the handoff immediately when authorization, the stop condition, ownership, revision, required checks, or the next action changes. Replace superseded state in place. Keep the selected frontend, confirmed destination (including the Desktop space ID when applicable), affected worker's pane or terminal address and separate job ID if applicable. Bind each verdict to its revision. For example: “A approved; HEAD B awaits review and CI. Merge B only when both pass under the current authorization.” Link to long reports. Omit transcripts, credentials, and routine polls.
+
+After compaction, reopen the record and match its goal and checkout to the current task. Reconcile the latest user direction, live workers, HEAD, CI and review results. If the record is missing, ambiguous or stale, reconstruct what can be verified; confirm any unresolved permission before the dependent action. Take the next authorized action in the same turn. Reconcile owned panes as each assignment ends and verify the final layout before signing off.
