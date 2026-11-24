@@ -12,7 +12,9 @@ When Kagami requests DeepSeek, use OpenCode's OpenCode Go provider (`opencode-go
 
 ## Run and observe the execution session
 
-For an agreed interactive OpenCode assignment, launch the ordinary interactive client. When working through Herdr, keep the implementer visible in the same Herdr workspace so Kagami can inspect and steer the session. Check the installed CLI's help when invocation syntax is uncertain.
+Always start OpenCode and AGY assignments in interactive mode. Launch OpenCode with `opencode`; never use `opencode run`. Launch AGY with `agy` and always omit the `--mode` option.
+
+When working through Herdr, keep the implementer visible in the same Herdr workspace so Kagami can inspect and steer the session. Check the installed CLI's help when invocation syntax is uncertain.
 
 Before replacing an implementer or handing off its shared worktree, confirm the execution session has finished or stopped on the server. Closing the visible client can leave the agent writing to the same files.
 
