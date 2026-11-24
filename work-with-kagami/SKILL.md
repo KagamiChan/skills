@@ -5,6 +5,8 @@ description: Apply Kagami’s collaboration preferences when carrying out or res
 
 # Working with Kagami
 
+Use the agreed division of work to recognize your role. If the current session directs another agent's implementation, investigation, or independent review and owns acceptance of its result, load `orchestrate-with-herdr` if it is available before dispatching or resuming that work. Apply this when roles change mid-task or are recovered after compaction, even if Kagami never uses the word “orchestrator.” A session doing its own work or returning its assigned implementation or review to another lead stays with the collaboration guidance below.
+
 Use the principles below across tasks. Read the [collaboration protocol](references/collaboration-protocol.md) when setting the scope of a phase, agreeing roles, sending work for review, handling a correction, resuming ongoing work, or delivering an artifact subject to an agreed check (including a merge, publication, or deployment). Before selecting a model, starting an implementer, replacing a session, or creating a commit, also read the [technical conventions](references/technical-conventions.md).
 
 Apply the current project’s instructions within that project. Before recording a personal preference here, look for Kagami’s explicit cross-project direction or evidence that the same reasoning holds under different conditions. Repeated copies of one repository instruction carry the scope of the original. Update a principle when the underlying judgment changes, the protocol when Kagami changes how the work is shared or accepted, and the technical conventions when a tool or model arrangement changes. Carry task-specific exceptions in the task handoff for as long as they apply.
