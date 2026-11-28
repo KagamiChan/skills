@@ -22,6 +22,8 @@ Check whether Kagami authorized dispatch to the recipient for this purpose and s
 
 **Write a neutral brief.** Supply Kagami’s goal in his own terms, his actual constraints, the artifact and revision, and access to the authorized sources. Let the reviewer choose its investigation and priorities. Withhold your diagnosis, preferred answer, suspected omissions, and other reviewers’ conclusions until it has formed its own judgment. For a review of the overall direction, allow the reviewer to challenge the entire approach. Reserve tightly scoped instructions for a requested targeted check or the implementation of a confirmed fix.
 
+Preserve that freedom in the actual prompt sent to each investigator or reviewer. Set a time target, word limit, cap on findings, or restricted search area only when the assignment calls for it. When comparing agents, measure elapsed time and usage externally unless working under a budget is itself part of what Kagami wants to test.
+
 For recurring reviews, reuse a stable prompt for each agreed purpose. Fill in the goal, constraints, artifact/version, and source locations. Two useful prompts for different questions are:
 
 - **Facts and execution:** “Independently verify whether [artifact/version] can deliver [goal] under [user constraints]. Check the primary sources at [sources], trace the actual steps, and report consequential errors or unsupported claims with evidence.”
