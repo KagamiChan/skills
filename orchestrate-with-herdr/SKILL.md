@@ -47,7 +47,16 @@ herdr agent read <worker> --source recent-unwrapped --lines <count>
 
 ## Accept the work and carry it forward
 
-Inspect the changed artifact at the reported revision. Re-run the check that distinguishes the original failure from success through the normal entry point. Attribute worker-reported results separately from checks you ran. Return a failed acceptance case to the implementer with the observed input and output. Evaluate findings against the requested behavior. Keep separate enhancements out of the current fix unless the user expands its scope. If review is required, resolve consequential findings and have the corrected revision reviewed under the agreed conditions. For a review-only assignment, deliver the findings and coverage.
+Inspect the changed artifact at the reported revision. Re-run the check that distinguishes the original failure from success through the normal entry point. Attribute worker-reported results separately from checks you ran. Return a failed acceptance case to the implementer with the observed input and output. For a review-only assignment, deliver the findings and coverage.
+
+### Decide which review findings should change the PR
+
+Before implementation, establish the behavior this PR must deliver, who uses it under what conditions, and any agreed non-goals or accepted limitations. Respect the agreed sequence of tasks. Give reviewers room to investigate the full change, including interactions across revisions. The lead owns the decision to send a finding back for implementation.
+
+- **Judge the finding and the remedy separately.** Before assigning a fix, trace the claimed failure to a supported use case. Weigh the harm, how realistically it can occur, and whether the benefit of a feasible remedy justifies the complexity it would add to the PR and leave for maintainers. Ask for a concrete fix direction when its cost or effect is unclear. A rare but credible data-loss path can warrant blocking.
+- **Give the implementer a decision.** Send confirmed regressions and unmet acceptance cases back with evidence. Explain why a finding covered by an agreed limitation needs no change. When the PR is otherwise ready, carry worthwhile minor or independent improvements into a follow-up issue within the agreed workflow. Reassess that issue against the original goal when it comes up; recording it creates no commitment to implement it.
+- **Keep continuity across rounds.** On the new head, check what was fixed, what the fix affected, and what new evidence changes an earlier decision. If each round produces another edge case while the requested behavior stays the same, pause the next fix and inspect the premise with the implementer or design owner. If an unsupported promise entered the issue or design, correct it at its source and simplify the affected code and tests. Resume from the agreed acceptance case. A newly exposed material defect still deserves repair at any round.
+- **Finish under the actual merge agreement.** Once the behavior, required checks, and required approvals hold for the current head, carry out the authorized delivery. Non-blocking comments can coexist with approval. If a required reviewer still blocks on a disputed point, present the evidence for reconsideration or obtain an authorized exception. Keep any exception specific to the PR and conditions for which it was granted.
 
 ### Deliver dependent changes with GitHub native stacked PRs
 
